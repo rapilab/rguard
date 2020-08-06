@@ -8,7 +8,10 @@ edition = "2018"
 
 [dependencies]
 
+[dependencies.rguard_core]
+path="rguard_core"
+
 [workspace]
 members = [
-  "rguard-core"
+  "rguard_core"
 ]
