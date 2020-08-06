@@ -33,3 +33,10 @@ Articles
  - [Walle]
 
 ### AAR ProGuard
+
+### 其它
+
+ - [pyretrace](https://github.com/EverythingMe/pyretrace) A python reimplementation on Proguard's Retrace, with a deobfuscation API for python.
+ - [ResProguard](https://github.com/JohnnyYin/ResProguard) C++ 2015 年
+
+
