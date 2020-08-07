@@ -2,6 +2,7 @@ use crate::classfile::clazz::Clazz;
 use crate::classfile::visitor::member_visitor::MemberVisitor;
 use crate::classfile::program_field::ProgramField;
 use crate::classfile::program_method::ProgramMethod;
+use crate::classfile::attribute::attribute_visitor::AttributeVisitor;
 
 pub struct ProgramClass {
     fields: Vec<ProgramField>,
@@ -13,6 +14,9 @@ impl ProgramClass {
 
     }
     pub fn method_accept(&self, member_visitor: Box<dyn MemberVisitor>) {
+
+    }
+    pub fn attributes_accept(&self, attribute_visitor: Box<dyn AttributeVisitor>) {
 
     }
 }

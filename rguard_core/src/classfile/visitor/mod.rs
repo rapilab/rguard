@@ -6,6 +6,8 @@ pub mod class_pool_filler;
 
 pub mod member_access_filter;
 
+pub mod all_attribute_visitor;
+
 pub mod constant_visitor;
 pub mod member_visitor;
 pub mod attribute_visitor;

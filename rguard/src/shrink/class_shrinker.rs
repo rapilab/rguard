@@ -4,6 +4,14 @@ use rguard_core::classfile::program_class::ProgramClass;
 use rguard_core::classfile::library_clazz::LibraryClazz;
 use rguard_core::classfile::visitor::member_access_filter::MemberAccessFilter;
 use crate::shrink::used_member_filter::UsedMemberFilter;
+use rguard_core::classfile::attribute::attribute_visitor::AttributeVisitor;
+use rguard_core::classfile::attribute::attribute::Attribute;
+use rguard_core::classfile::clazz::Clazz;
+use rguard_core::classfile::visitor::member_visitor::MemberVisitor;
+use rguard_core::classfile::program_member::ProgramMember;
+use rguard_core::classfile::program_method::ProgramMethod;
+use rguard_core::classfile::program_field::ProgramField;
+use rguard_core::classfile::visitor::all_attribute_visitor::AllAttributeVisitor;
 
 pub struct ClassShrinker {
     pub usage_marker: SimpleUsageMarker
@@ -19,8 +27,23 @@ pub struct MyNestMemberShrinker {
 
 }
 
-impl MyNestMemberShrinker {}
+impl MyNestMemberShrinker {
+    pub fn new() -> MyNestMemberShrinker {
+        MyNestMemberShrinker {}
+    }
+}
 
+impl AttributeVisitor for MyNestMemberShrinker {
+    fn visit_any_attribute(&self, clazz: Box<dyn Clazz>, attribute: Attribute) {
+        unimplemented!()
+    }
+}
+
+impl MemberVisitor for ClassShrinker {
+    fn visit_program_member(self, program_class: ProgramClass, program_member: ProgramMember) {}
+    fn visit_program_field(self, program_class: ProgramClass, program_field: ProgramField) {}
+    fn visit_program_method(self, program_class: ProgramClass, program_method: ProgramMethod) {}
+}
 
 impl ClassVisitor for ClassShrinker {
     fn visit_program_class(&self, program_clazz: ProgramClass) {
@@ -34,6 +57,16 @@ impl ClassVisitor for ClassShrinker {
         program_clazz.method_accept(
             Box::from(MemberAccessFilter::new())
         );
+
+        program_clazz.attributes_accept(Box::from(MyNestMemberShrinker::new()));
+
+        // program_clazz.fields_accept(Box::from(self));
+        // program_clazz.method_accept(Box::from(self));
+        // program_clazz.attributes_accept(Box::from(self));
+
+        program_clazz.fields_accept(Box::from(AllAttributeVisitor::new()));
+        program_clazz.method_accept(Box::from(AllAttributeVisitor::new()));
+        program_clazz.attributes_accept(Box::from(AllAttributeVisitor::new()));
     }
 
     fn visit_library_class(&self, library_clazz: LibraryClazz) {
