@@ -1,5 +1,7 @@
 pub mod class_cleaner;
 pub mod class_visitor;
+pub mod multi_class_visitor;
+
 pub mod constant_visitor;
 pub mod member_visitor;
 pub mod attribute_visitor;
