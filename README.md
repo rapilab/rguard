@@ -13,6 +13,19 @@ ProGuard 能够对 Java 类中的代码进行压缩（Shrink）,优化（Optimiz
 3. 混淆（Obfuscate）： 在混淆处理这一步中，使用 a,b,c 等无意义的名称，对类，字段和方法进行重命名。
 4. 预检（Preveirfy）： 在预检这一步中，主要是在 Java 平台上对处理后的代码进行预检。
 
+#### Shrink
+
+1. First Shrink
+   - Mark the classes with processing flags if fields or methods are removed
+   - Shrink the arrays for constant pool, interfaces, fields, methods, and class attributes.
+   - Shrink the arrays for nest members.
+   - Shrink the constant pool, also setting up an index map.
+2. Compact the remaining fields, methods, and attributes, and remap their references to the constant pool.
+   - Remap the references to the constant pool if it has shrunk.
+   - Remap all constant pool references.
+3. Replace any unused classes in the signatures.
+4. Compact the extra field pointing to the subclasses of this class.
+
 ### [AndResGuard](https://github.com/shwenzhang/AndResGuard)
 
 > AndResGuard 是一个缩小 APK 大小的工具，原理类似 Java Proguard，但是只针对资源。它会将原本冗长的资源路径变短，例如将 `res/drawable/wechat` 变为 `r/d/a`。
