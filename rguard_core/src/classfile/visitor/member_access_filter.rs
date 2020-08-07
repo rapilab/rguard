@@ -9,7 +9,9 @@ pub struct MemberAccessFilter {
 }
 
 impl MemberAccessFilter {
-
+    pub fn new() -> MemberAccessFilter {
+        MemberAccessFilter {}
+    }
 }
 
 impl MemberVisitor for MemberAccessFilter {

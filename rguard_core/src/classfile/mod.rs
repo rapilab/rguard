@@ -9,3 +9,4 @@ pub mod program_member;
 pub mod library_clazz;
 
 pub mod visitor;
+pub mod attribute;
