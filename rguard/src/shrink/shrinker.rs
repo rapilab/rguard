@@ -17,6 +17,6 @@ impl Shrinker {
 
         program_class_pool.classes_accept(ClassCleaner::default());
         library_class_pool.classes_accept(ClassCleaner::default());
-        
+
     }
 }
