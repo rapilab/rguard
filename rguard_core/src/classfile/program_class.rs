@@ -9,10 +9,10 @@ pub struct ProgramClass {
 }
 
 impl ProgramClass {
-    pub fn fields_accept(&self, member_visitor: MemberVisitor) {
+    pub fn fields_accept(&self, member_visitor: Box<dyn MemberVisitor>) {
 
     }
-    pub fn method_accept(&self, member_visitor: MemberVisitor) {
+    pub fn method_accept(&self, member_visitor: Box<dyn MemberVisitor>) {
 
     }
 }
