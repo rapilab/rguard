@@ -1,4 +1,4 @@
-use rguard_core::shrink::Shrinker;
+use rguard::shrink::Shrinker;
 
 fn main() {
     execute();

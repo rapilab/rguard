@@ -1,5 +1,5 @@
 [package]
-name = "rguard_core"
+name = "rguard"
 version = "0.1.0"
 authors = ["Phodal Huang <h@phodal.com>"]
 edition = "2018"
