@@ -4,6 +4,7 @@ use rguard_core::resources::resource_file_pool::ResourceFilePool;
 use rguard::configuration::Configuration;
 use rguard::optimize::optimizer::Optimizer;
 use rguard::obfuscate::obfuscator::Obfuscator;
+use rguard::preverify::preverifier::Preverifier;
 
 pub struct RGuard {
     configuration: Configuration,
@@ -58,7 +59,12 @@ impl RGuard {
         );
     }
 
-    pub fn preverify(&self) {}
+    pub fn preverify(&self) {
+        let preverifier = Preverifier::new(self.configuration.clone());
+        preverifier.execute(
+            self.program_class_pool.clone(),
+        );
+    }
 
     pub fn write_output(&self) {}
 }
