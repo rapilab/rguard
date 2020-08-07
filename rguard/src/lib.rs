@@ -1,3 +1,4 @@
+pub mod configuration;
 pub mod obfuscate;
 pub mod optimize;
 pub mod preverify;

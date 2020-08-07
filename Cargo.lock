@@ -3,6 +3,9 @@
 [[package]]
 name = "rguard"
 version = "0.1.0"
+dependencies = [
+ "rguard_core 0.1.0",
+]
 
 [[package]]
 name = "rguard_core"

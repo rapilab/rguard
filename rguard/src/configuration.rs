@@ -1,6 +1,5 @@
-pub struct Configuration {
-
-}
+#[derive(Copy, Clone)]
+pub struct Configuration {}
 
 impl Default for Configuration {
     fn default() -> Self {
