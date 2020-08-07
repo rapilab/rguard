@@ -1,26 +1,9 @@
-use rguard::shrink::Shrinker;
+use crate::rguard::RGuard;
+
+pub mod rguard;
+pub mod configuration;
 
 fn main() {
-    execute();
+    let guard = RGuard::default();
+    guard.execute();
 }
-
-fn execute() {
-    shrink();
-    optimize();
-    obfuscate();
-    preverify();
-    write_output();
-}
-
-fn shrink() {
-    let shrinker = Shrinker::default();
-    shrinker.execute();
-}
-
-fn optimize() {}
-
-fn obfuscate() {}
-
-fn preverify() {}
-
-fn write_output() {}
