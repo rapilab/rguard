@@ -1,4 +1,4 @@
-use crate::classfile::visitor::class_cleaner::ClassCleaner;
+use crate::classfile::visitor::class_visitor::ClassVisitor;
 
 #[derive(Copy, Clone)]
 pub struct ClassPool {}
@@ -9,7 +9,7 @@ impl Default for ClassPool {
     }
 }
 impl ClassPool {
-    pub fn classes_accept(&self, cleaner: ClassCleaner) {
+    pub fn classes_accept(&self, cleaner: Box<dyn ClassVisitor>) {
 
     }
 }

@@ -20,6 +20,6 @@ impl UsageMarker {
                 simple_usage_marker: SimpleUsageMarker,
                 class_usage_marker: ClassUsageMarker
     ) {
-
+        library_class_pool.classes_accept(Box::from(class_usage_marker));
     }
 }

@@ -18,8 +18,8 @@ impl Shrinker {
     pub fn execute(&self, program_class_pool: ClassPool, library_class_pool: ClassPool, resource_file_pool: ResourceFilePool) {
         let writer = PrintWriter::new();
 
-        program_class_pool.classes_accept(ClassCleaner::default());
-        library_class_pool.classes_accept(ClassCleaner::default());
+        program_class_pool.classes_accept(Box::from(ClassCleaner::default()));
+        library_class_pool.classes_accept(Box::from(ClassCleaner::default()));
 
         let simple_usage_marker = SimpleUsageMarker::default();
         let class_usage_marker = ClassUsageMarker::default();
