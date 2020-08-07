@@ -40,13 +40,10 @@ impl Shrinker {
 
         let new_program_class_pool = ClassPool::default();
 
-        let mut visitors: Vec<Box<dyn ClassVisitor>> = vec![];
-        let shrinker = ClassShrinker::new(simple_usage_marker);
-        let filler = ClassPoolFiller::new(new_program_class_pool);
-        visitors.push(Box::from(shrinker));
-        visitors.push(Box::from(filler));
-
-        let multi_visitors = MultiClassVisitor::new(visitors);
+        let multi_visitors = MultiClassVisitor::new(vec![
+            Box::from(ClassShrinker::new(simple_usage_marker)),
+            Box::from(ClassPoolFiller::new(new_program_class_pool))
+        ]);
         let used_class_filter = UsedClassFilter::new(simple_usage_marker, Box::from(multi_visitors));
         program_class_pool.classes_accept(Box::from(used_class_filter));
 
