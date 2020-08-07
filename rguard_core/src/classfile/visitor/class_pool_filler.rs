@@ -1,18 +1,19 @@
+use crate::classfile::class_pool::ClassPool;
 use crate::classfile::visitor::class_visitor::ClassVisitor;
 use crate::classfile::program_clazz::ProgramClazz;
 use crate::classfile::library_clazz::LibraryClazz;
 
-pub struct MultiClassVisitor {
-    pub visitors: Vec<Box<dyn ClassVisitor>>
+pub struct ClassPoolFiller {
+    pub class_pool: ClassPool
 }
 
-impl MultiClassVisitor {
-    pub fn new(visitors: Vec<Box<dyn ClassVisitor>>) -> MultiClassVisitor {
-        MultiClassVisitor { visitors }
+impl ClassPoolFiller {
+    pub fn new(class_pool: ClassPool) -> ClassPoolFiller {
+        ClassPoolFiller { class_pool }
     }
 }
 
-impl ClassVisitor for MultiClassVisitor {
+impl ClassVisitor for ClassPoolFiller {
     fn visit_program_class(&self, program_clazz: ProgramClazz) {
         unimplemented!()
     }

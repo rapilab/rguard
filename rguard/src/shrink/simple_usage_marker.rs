@@ -1,6 +1,5 @@
-pub struct SimpleUsageMarker {
-
-}
+#[derive(Copy, Clone)]
+pub struct SimpleUsageMarker {}
 
 impl SimpleUsageMarker {}
 
