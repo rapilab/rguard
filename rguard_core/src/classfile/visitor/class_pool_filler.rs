@@ -1,6 +1,6 @@
 use crate::classfile::class_pool::ClassPool;
 use crate::classfile::visitor::class_visitor::ClassVisitor;
-use crate::classfile::program_clazz::ProgramClazz;
+use crate::classfile::program_class::ProgramClass;
 use crate::classfile::library_clazz::LibraryClazz;
 
 pub struct ClassPoolFiller {
@@ -14,7 +14,7 @@ impl ClassPoolFiller {
 }
 
 impl ClassVisitor for ClassPoolFiller {
-    fn visit_program_class(&self, program_clazz: ProgramClazz) {
+    fn visit_program_class(&self, program_clazz: ProgramClass) {
         unimplemented!()
     }
 

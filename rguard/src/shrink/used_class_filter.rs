@@ -1,6 +1,6 @@
 use crate::shrink::simple_usage_marker::SimpleUsageMarker;
 use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
-use rguard_core::classfile::program_clazz::ProgramClazz;
+use rguard_core::classfile::program_class::ProgramClass;
 use rguard_core::classfile::library_clazz::LibraryClazz;
 
 pub struct UsedClassFilter {
@@ -19,7 +19,7 @@ impl UsedClassFilter {
 }
 
 impl ClassVisitor for UsedClassFilter {
-    fn visit_program_class(&self, program_clazz: ProgramClazz) {
+    fn visit_program_class(&self, program_clazz: ProgramClass) {
         unimplemented!()
     }
 
