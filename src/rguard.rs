@@ -2,6 +2,8 @@ use rguard::shrink::shrinker::Shrinker;
 use rguard_core::classfile::class_pool::ClassPool;
 use rguard_core::resources::resource_file_pool::ResourceFilePool;
 use rguard::configuration::Configuration;
+use rguard::optimize::optimizer::Optimizer;
+use rguard::obfuscate::obfuscator::Obfuscator;
 
 pub struct RGuard {
     configuration: Configuration,
@@ -39,9 +41,22 @@ impl RGuard {
         );
     }
 
-    pub fn optimize(&self) {}
+    pub fn optimize(&self) {
+        let optimizer = Optimizer::new(self.configuration.clone());
+        optimizer.execute(
+            self.program_class_pool.clone(),
+            self.library_class_pool.clone()
+        )
+    }
 
-    pub fn obfuscate(&self) {}
+    pub fn obfuscate(&self) {
+        let obfuscator = Obfuscator::new(self.configuration.clone());
+        obfuscator.execute(
+            self.program_class_pool.clone(),
+            self.library_class_pool.clone(),
+            self.resource_file_pool.clone()
+        );
+    }
 
     pub fn preverify(&self) {}
 
