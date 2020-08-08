@@ -1,20 +1,20 @@
 use crate::shrink::simple_usage_marker::SimpleUsageMarker;
-use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
-use rguard_core::classfile::program_class::ProgramClass;
-use rguard_core::classfile::library_clazz::LibraryClazz;
-use rguard_core::classfile::visitor::member_access_filter::MemberAccessFilter;
 use crate::shrink::used_member_filter::UsedMemberFilter;
-use rguard_core::classfile::attribute::attribute_visitor::AttributeVisitor;
 use rguard_core::classfile::attribute::attribute::Attribute;
+use rguard_core::classfile::attribute::attribute_visitor::AttributeVisitor;
 use rguard_core::classfile::clazz::Clazz;
-use rguard_core::classfile::visitor::member_visitor::MemberVisitor;
+use rguard_core::classfile::library_clazz::LibraryClazz;
+use rguard_core::classfile::program_class::ProgramClass;
+use rguard_core::classfile::program_field::ProgramField;
 use rguard_core::classfile::program_member::ProgramMember;
 use rguard_core::classfile::program_method::ProgramMethod;
-use rguard_core::classfile::program_field::ProgramField;
 use rguard_core::classfile::visitor::all_attribute_visitor::AllAttributeVisitor;
+use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
+use rguard_core::classfile::visitor::member_access_filter::MemberAccessFilter;
+use rguard_core::classfile::visitor::member_visitor::MemberVisitor;
 
 pub struct ClassShrinker {
-    pub usage_marker: SimpleUsageMarker
+    pub usage_marker: SimpleUsageMarker,
 }
 
 impl ClassShrinker {
@@ -23,9 +23,7 @@ impl ClassShrinker {
     }
 }
 
-pub struct MyNestMemberShrinker {
-
-}
+pub struct MyNestMemberShrinker {}
 
 impl MyNestMemberShrinker {
     pub fn new() -> MyNestMemberShrinker {
@@ -47,16 +45,12 @@ impl MemberVisitor for ClassShrinker {
 
 impl ClassVisitor for ClassShrinker {
     fn visit_program_class(&self, program_clazz: ProgramClass) {
-        program_clazz.fields_accept(
-            Box::from(UsedMemberFilter::new(
-                self.usage_marker,
-                None,
-                Box::from(MemberAccessFilter::new())
-            ))
-        );
-        program_clazz.method_accept(
-            Box::from(MemberAccessFilter::new())
-        );
+        program_clazz.fields_accept(Box::from(UsedMemberFilter::new(
+            self.usage_marker,
+            None,
+            Box::from(MemberAccessFilter::new()),
+        )));
+        program_clazz.method_accept(Box::from(MemberAccessFilter::new()));
 
         program_clazz.attributes_accept(Box::from(MyNestMemberShrinker::new()));
 

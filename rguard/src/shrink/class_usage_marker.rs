@@ -1,10 +1,8 @@
-use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
-use rguard_core::classfile::program_class::ProgramClass;
 use rguard_core::classfile::library_clazz::LibraryClazz;
+use rguard_core::classfile::program_class::ProgramClass;
+use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
 
-pub struct ClassUsageMarker {
-
-}
+pub struct ClassUsageMarker {}
 
 impl Default for ClassUsageMarker {
     fn default() -> Self {

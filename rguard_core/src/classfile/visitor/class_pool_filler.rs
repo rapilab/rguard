@@ -1,10 +1,10 @@
 use crate::classfile::class_pool::ClassPool;
-use crate::classfile::visitor::class_visitor::ClassVisitor;
-use crate::classfile::program_class::ProgramClass;
 use crate::classfile::library_clazz::LibraryClazz;
+use crate::classfile::program_class::ProgramClass;
+use crate::classfile::visitor::class_visitor::ClassVisitor;
 
 pub struct ClassPoolFiller {
-    pub class_pool: ClassPool
+    pub class_pool: ClassPool,
 }
 
 impl ClassPoolFiller {

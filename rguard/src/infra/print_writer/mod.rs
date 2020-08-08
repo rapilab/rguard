@@ -1,6 +1,6 @@
 pub struct PrintWriter {
     // out: Box<dyn Fn(&mut T)>
-    pub out: Box<()>
+    pub out: Box<()>,
 }
 
 impl PrintWriter {

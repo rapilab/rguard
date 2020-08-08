@@ -1,17 +1,15 @@
-use crate::classfile::visitor::class_visitor::ClassVisitor;
-use crate::classfile::program_class::ProgramClass;
+use crate::classfile::attribute::attribute::Attribute;
+use crate::classfile::attribute::attribute_visitor::AttributeVisitor;
+use crate::classfile::clazz::Clazz;
 use crate::classfile::library_clazz::LibraryClazz;
-use crate::classfile::visitor::member_visitor::MemberVisitor;
+use crate::classfile::program_class::ProgramClass;
+use crate::classfile::program_field::ProgramField;
 use crate::classfile::program_member::ProgramMember;
 use crate::classfile::program_method::ProgramMethod;
-use crate::classfile::program_field::ProgramField;
-use crate::classfile::attribute::attribute_visitor::AttributeVisitor;
-use crate::classfile::attribute::attribute::Attribute;
-use crate::classfile::clazz::Clazz;
+use crate::classfile::visitor::class_visitor::ClassVisitor;
+use crate::classfile::visitor::member_visitor::MemberVisitor;
 
-pub struct AllAttributeVisitor {
-
-}
+pub struct AllAttributeVisitor {}
 
 impl AllAttributeVisitor {
     pub fn new() -> AllAttributeVisitor {
@@ -33,4 +31,3 @@ impl ClassVisitor for AllAttributeVisitor {
     fn visit_program_class(&self, program_clazz: ProgramClass) {}
     fn visit_library_class(&self, library_clazz: LibraryClazz) {}
 }
-

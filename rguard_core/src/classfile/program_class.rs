@@ -1,24 +1,18 @@
+use crate::classfile::attribute::attribute_visitor::AttributeVisitor;
 use crate::classfile::clazz::Clazz;
-use crate::classfile::visitor::member_visitor::MemberVisitor;
 use crate::classfile::program_field::ProgramField;
 use crate::classfile::program_method::ProgramMethod;
-use crate::classfile::attribute::attribute_visitor::AttributeVisitor;
+use crate::classfile::visitor::member_visitor::MemberVisitor;
 
 pub struct ProgramClass {
     fields: Vec<ProgramField>,
-    methods: Vec<ProgramMethod>
+    methods: Vec<ProgramMethod>,
 }
 
 impl ProgramClass {
-    pub fn fields_accept(&self, member_visitor: Box<dyn MemberVisitor>) {
-
-    }
-    pub fn method_accept(&self, member_visitor: Box<dyn MemberVisitor>) {
-
-    }
-    pub fn attributes_accept(&self, attribute_visitor: Box<dyn AttributeVisitor>) {
-
-    }
+    pub fn fields_accept(&self, member_visitor: Box<dyn MemberVisitor>) {}
+    pub fn method_accept(&self, member_visitor: Box<dyn MemberVisitor>) {}
+    pub fn attributes_accept(&self, attribute_visitor: Box<dyn AttributeVisitor>) {}
 }
 
 impl Clazz for ProgramClass {

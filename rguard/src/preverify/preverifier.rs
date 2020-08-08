@@ -1,10 +1,10 @@
 use crate::configuration::Configuration;
+use crate::preverify::code_preverifier::CodePreverifier;
 use rguard_core::classfile::class_pool::ClassPool;
 use rguard_core::classfile::visitor::class_cleaner::ClassCleaner;
-use crate::preverify::code_preverifier::CodePreverifier;
 
 pub struct Preverifier {
-    configuration: Configuration
+    configuration: Configuration,
 }
 
 impl Preverifier {

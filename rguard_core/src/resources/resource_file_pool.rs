@@ -1,7 +1,5 @@
 #[derive(Copy, Clone)]
-pub struct ResourceFilePool {
-
-}
+pub struct ResourceFilePool {}
 
 impl Default for ResourceFilePool {
     fn default() -> Self {
@@ -9,6 +7,4 @@ impl Default for ResourceFilePool {
     }
 }
 
-impl ResourceFilePool {
-
-}
+impl ResourceFilePool {}

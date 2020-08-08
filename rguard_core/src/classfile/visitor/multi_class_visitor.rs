@@ -1,9 +1,9 @@
-use crate::classfile::visitor::class_visitor::ClassVisitor;
-use crate::classfile::program_class::ProgramClass;
 use crate::classfile::library_clazz::LibraryClazz;
+use crate::classfile::program_class::ProgramClass;
+use crate::classfile::visitor::class_visitor::ClassVisitor;
 
 pub struct MultiClassVisitor {
-    pub visitors: Vec<Box<dyn ClassVisitor>>
+    pub visitors: Vec<Box<dyn ClassVisitor>>,
 }
 
 impl MultiClassVisitor {

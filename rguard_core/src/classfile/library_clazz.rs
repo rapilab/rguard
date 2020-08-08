@@ -1,8 +1,6 @@
 use crate::classfile::clazz::Clazz;
 
-pub struct LibraryClazz {
-
-}
+pub struct LibraryClazz {}
 
 impl Clazz for LibraryClazz {
     fn get_name(&self) -> String {

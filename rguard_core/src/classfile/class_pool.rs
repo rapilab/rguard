@@ -9,7 +9,5 @@ impl Default for ClassPool {
     }
 }
 impl ClassPool {
-    pub fn classes_accept(&self, cleaner: Box<dyn ClassVisitor>) {
-
-    }
+    pub fn classes_accept(&self, cleaner: Box<dyn ClassVisitor>) {}
 }

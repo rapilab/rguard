@@ -1,5 +1,3 @@
-pub struct ProgramMethod {
-
-}
+pub struct ProgramMethod {}
 
 impl ProgramMethod {}

@@ -1,9 +1,9 @@
 use crate::shrink::simple_usage_marker::SimpleUsageMarker;
-use rguard_core::classfile::visitor::member_visitor::MemberVisitor;
-use rguard_core::classfile::program_member::ProgramMember;
-use rguard_core::classfile::program_method::ProgramMethod;
 use rguard_core::classfile::program_class::ProgramClass;
 use rguard_core::classfile::program_field::ProgramField;
+use rguard_core::classfile::program_member::ProgramMember;
+use rguard_core::classfile::program_method::ProgramMethod;
+use rguard_core::classfile::visitor::member_visitor::MemberVisitor;
 
 pub struct UsedMemberFilter {
     usage_marker: SimpleUsageMarker,
@@ -12,12 +12,15 @@ pub struct UsedMemberFilter {
 }
 
 impl UsedMemberFilter {
-    pub fn new(usage_marker: SimpleUsageMarker, used_member_filter: Option<Box<dyn MemberVisitor>>,
-               unused_member_visitor: Box<dyn MemberVisitor>) -> UsedMemberFilter {
+    pub fn new(
+        usage_marker: SimpleUsageMarker,
+        used_member_filter: Option<Box<dyn MemberVisitor>>,
+        unused_member_visitor: Box<dyn MemberVisitor>,
+    ) -> UsedMemberFilter {
         UsedMemberFilter {
             usage_marker,
             used_member_filter,
-            unused_member_visitor
+            unused_member_visitor,
         }
     }
 }

@@ -1,5 +1,3 @@
-pub struct ProgramField {
-
-}
+pub struct ProgramField {}
 
 impl ProgramField {}

@@ -7,6 +7,4 @@ impl Default for Configuration {
     }
 }
 
-impl Configuration {
-
-}
+impl Configuration {}

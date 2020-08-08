@@ -1,5 +1,3 @@
-pub struct ProgramMember {
-
-}
+pub struct ProgramMember {}
 
 impl ProgramMember {}

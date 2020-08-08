@@ -1,12 +1,10 @@
-use crate::classfile::visitor::member_visitor::MemberVisitor;
-use crate::classfile::program_member::ProgramMember;
-use crate::classfile::program_method::ProgramMethod;
 use crate::classfile::program_class::ProgramClass;
 use crate::classfile::program_field::ProgramField;
+use crate::classfile::program_member::ProgramMember;
+use crate::classfile::program_method::ProgramMethod;
+use crate::classfile::visitor::member_visitor::MemberVisitor;
 
-pub struct MemberAccessFilter {
-
-}
+pub struct MemberAccessFilter {}
 
 impl MemberAccessFilter {
     pub fn new() -> MemberAccessFilter {
