@@ -15,11 +15,11 @@ impl Default for ClassCleaner {
 }
 
 impl ClassVisitor for ClassCleaner {
-    fn visit_any_class(&self, clazz: Box<dyn Clazz>) {
+    fn visit_any_class(&mut self, clazz: Box<dyn Clazz>) {
         unimplemented!()
     }
 
-    fn visit_program_class(&self, program_clazz: ProgramClass) {
+    fn visit_program_class(&mut self, program_clazz: ProgramClass) {
         unimplemented!()
     }
 

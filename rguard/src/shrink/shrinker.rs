@@ -43,12 +43,12 @@ impl Shrinker {
             class_usage_marker,
         );
 
-        let new_program_class_pool = ClassPool::default();
-
+        let mut new_program_class_pool = ClassPool::default();
         let multi_visitors = MultiClassVisitor::new(vec![
             Box::from(ClassShrinker::new(simple_usage_marker)),
-            Box::from(ClassPoolFiller::new(new_program_class_pool)),
+            Box::from(ClassPoolFiller::new(&mut new_program_class_pool)),
         ]);
+
         let used_class_filter =
             UsedClassFilter::new(simple_usage_marker, Box::from(multi_visitors));
         program_class_pool.classes_accept(Box::from(used_class_filter));

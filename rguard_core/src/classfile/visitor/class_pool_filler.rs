@@ -4,22 +4,22 @@ use crate::classfile::program_class::ProgramClass;
 use crate::classfile::visitor::class_visitor::ClassVisitor;
 use crate::classfile::clazz::Clazz;
 
-pub struct ClassPoolFiller {
-    pub class_pool: ClassPool,
+pub struct ClassPoolFiller<'a> {
+    pub class_pool: &'a ClassPool
 }
 
-impl ClassPoolFiller {
-    pub fn new(class_pool: ClassPool) -> ClassPoolFiller {
-        ClassPoolFiller { class_pool }
+impl<'a> ClassPoolFiller<'a> {
+    pub fn new(class_pool: &'a mut ClassPool) -> ClassPoolFiller<'a> {
+        ClassPoolFiller { class_pool: class_pool }
     }
 }
 
-impl ClassVisitor for ClassPoolFiller {
-    fn visit_any_class(&self, clazz: Box<dyn Clazz>) {
-        unimplemented!()
+impl<'a> ClassVisitor for ClassPoolFiller<'a> {
+    fn visit_any_class(&mut self, clazz: Box<dyn Clazz>) {
+        // self.class_pool.add_class(clazz);
     }
 
-    fn visit_program_class(&self, program_clazz: ProgramClass) {
+    fn visit_program_class(&mut self, program_clazz: ProgramClass) {
         unimplemented!()
     }
 
