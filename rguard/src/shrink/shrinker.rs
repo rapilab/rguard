@@ -25,7 +25,7 @@ impl Shrinker {
         program_class_pool: ClassPool,
         library_class_pool: ClassPool,
         resource_file_pool: ResourceFilePool,
-    ) {
+    ) -> ClassPool {
         let writer = PrintWriter::new();
 
         program_class_pool.classes_accept(Box::from(ClassCleaner::default()));
@@ -52,5 +52,7 @@ impl Shrinker {
         let used_class_filter =
             UsedClassFilter::new(simple_usage_marker, Box::from(multi_visitors));
         program_class_pool.classes_accept(Box::from(used_class_filter));
+
+        new_program_class_pool
     }
 }
