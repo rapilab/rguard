@@ -11,7 +11,7 @@ use rguard_core::classfile::visitor::class_pool_filler::ClassPoolFiller;
 use rguard_core::classfile::visitor::class_visitor::ClassVisitor;
 use rguard_core::classfile::visitor::multi_class_visitor::MultiClassVisitor;
 use rguard_core::resources::resource_file_pool::ResourceFilePool;
-use std::borrow::BorrowMut;
+use std::borrow::{BorrowMut, Borrow};
 
 pub struct Shrinker {
     configuration: Configuration,
@@ -45,15 +45,17 @@ impl Shrinker {
         );
 
         let mut new_program_class_pool = ClassPool::default();
+        let mut pool_filler = ClassPoolFiller::new(new_program_class_pool);
+        let shrinker = ClassShrinker::new(simple_usage_marker);
         let multi_visitors = MultiClassVisitor::new(vec![
-            Box::from(ClassShrinker::new(simple_usage_marker)),
-            Box::from(ClassPoolFiller::new(new_program_class_pool)),
+            Box::from(shrinker),
+            Box::from(pool_filler),
         ]);
 
         let used_class_filter =
             UsedClassFilter::new(simple_usage_marker, Box::from(multi_visitors));
         // program_class_pool.classes_accept(Box::from(used_class_filter));
 
-        // new_program_class_pool
+        // pool_filler
     }
 }

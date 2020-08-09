@@ -10,17 +10,13 @@ pub struct ClassPoolFiller {
 
 impl ClassPoolFiller {
     pub fn new(class_pool: ClassPool) -> ClassPoolFiller {
-        ClassPoolFiller { class_pool: ClassPool::default() }
+        ClassPoolFiller { class_pool: class_pool.clone()}
     }
 }
 
 impl ClassVisitor for ClassPoolFiller {
     fn visit_any_class(&mut self, clazz: Box<dyn Clazz>) {
         self.class_pool.add_class(clazz);
-    }
-
-    fn visit_program_class(&mut self, program_clazz: ProgramClass) {
-        unimplemented!()
     }
 
     fn visit_library_class(&self, library_clazz: LibraryClazz) {
