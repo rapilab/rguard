@@ -4,6 +4,7 @@ use crate::classfile::program_field::ProgramField;
 use crate::classfile::program_method::ProgramMethod;
 use crate::classfile::visitor::member_visitor::MemberVisitor;
 
+#[derive(Clone, Debug)]
 pub struct ProgramClass {
     fields: Vec<ProgramField>,
     methods: Vec<ProgramMethod>,

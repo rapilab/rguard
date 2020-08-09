@@ -17,9 +17,23 @@ impl Default for ClassUsageMarker {
     }
 }
 
+impl ClassUsageMarker {
+    pub fn new() {
+
+    }
+
+    fn mark_program_class_body(&self, program_clazz: &ProgramClass) {
+
+    }
+    fn marked_as_used(&self, program_clazz: &ProgramClass) {
+
+    }
+}
+
 impl ClassVisitor for ClassUsageMarker {
     fn visit_program_class(&self, program_clazz: ProgramClass) {
-        unimplemented!()
+        self.marked_as_used(&program_clazz);
+        self.mark_program_class_body(&program_clazz);
     }
 
     fn visit_library_class(&self, library_clazz: LibraryClazz) {
@@ -41,7 +55,7 @@ impl MemberVisitor for ClassUsageMarker {
     }
 }
 
-impl AttributeVisitor for ClassVisitor {
+impl AttributeVisitor for ClassUsageMarker {
     fn visit_any_attribute(&self, clazz: Box<dyn Clazz>, attribute: Attribute) {
         unimplemented!()
     }
