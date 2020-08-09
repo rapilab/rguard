@@ -1,5 +1,6 @@
 use crate::classfile::clazz::Clazz;
 
+#[derive(Clone)]
 pub struct LibraryClazz {}
 
 impl Clazz for LibraryClazz {

@@ -44,6 +44,10 @@ impl MemberVisitor for ClassShrinker {
 }
 
 impl ClassVisitor for ClassShrinker {
+    fn visit_any_class(&self, clazz: Box<dyn Clazz>) {
+        unimplemented!()
+    }
+
     fn visit_program_class(&self, program_clazz: ProgramClass) {
         program_clazz.fields_accept(Box::from(UsedMemberFilter::new(
             self.usage_marker,

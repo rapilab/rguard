@@ -28,6 +28,7 @@ impl MemberVisitor for AllAttributeVisitor {
 }
 
 impl ClassVisitor for AllAttributeVisitor {
+    fn visit_any_class(&self, clazz: Box<dyn Clazz>) {}
     fn visit_program_class(&self, program_clazz: ProgramClass) {}
     fn visit_library_class(&self, library_clazz: LibraryClazz) {}
 }

@@ -31,6 +31,10 @@ impl ClassUsageMarker {
 }
 
 impl ClassVisitor for ClassUsageMarker {
+    fn visit_any_class(&self, clazz: Box<dyn Clazz>) {
+        unimplemented!()
+    }
+
     fn visit_program_class(&self, program_clazz: ProgramClass) {
         self.marked_as_used(&program_clazz);
         self.mark_program_class_body(&program_clazz);
